@@ -1,0 +1,38 @@
+// ===================================
+// ラッパー・レイアウト
+// ===================================
+// コンテンツ幅やセクション余白の定義
+
+@use "../mixins/mixins" as *;
+
+// 共通の.inner
+.inner {
+  width: 100%;
+  max-width: 1000px;
+  margin-inline: auto;
+  padding-inline: 20px;
+}
+
+.inner--large {
+  width: 100%;
+  max-width: 1240px;
+  margin-inline: auto;
+  padding-inline: 20px;
+}
+
+.inner--small {
+  width: 100%;
+  max-width: 728px;
+  margin-inline: auto;
+  padding-inline: 20px;
+}
+
+.inner--full {
+  max-width: 100%;
+  padding-inline: 0;
+}
+
+// 共通のsection
+section {
+  padding-block: 80px;
+}

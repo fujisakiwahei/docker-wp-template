@@ -1,0 +1,22 @@
+/*!
+Theme Name: Theme Name
+Author: Your Name
+Description: Description
+Version: 1.0.0
+Text Domain: -
+*/
+
+// ===================================
+// メインスタイルシート
+// ===================================
+// すべてのSCSSファイルを統合するエントリーポイント
+
+// 🎯 Base - 基本設定
+@use "./base/reset";
+@use "./base/var" as *;
+@use "./base/common";
+@use "./base/wrappers";
+
+// 🧩 Components - 再利用可能なコンポーネント
+
+// 📄 Pages - ページ固有のスタイル

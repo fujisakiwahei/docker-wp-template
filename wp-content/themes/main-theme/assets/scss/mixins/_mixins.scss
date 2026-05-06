@@ -1,0 +1,55 @@
+// ===================================
+// ミックスイン
+// ===================================
+// 再利用可能なミックスイン定義
+
+@use "sass:map";
+@use "../abstract/breakpoints" as *;
+
+//-------------------------
+// メディアクエリ
+//-------------------------
+// max-width用のブレークポイント
+$breakpoints: (
+  "xs": "screen and (max-width: #{$xs-num})",
+  "sm": "screen and (max-width: #{$sm-num})",
+  "md": "screen and (max-width: #{$md-num})",
+  "lg": "screen and (max-width: #{$lg-num})",
+  "xl": "screen and (max-width: #{$xl-num})",
+  "xxl": "screen and (max-width: #{$xxl-num})",
+) !default;
+
+// min-width用のブレークポイント
+$breakpoints-min: (
+  "xs": "screen and (min-width: calc(#{$xs-num} + 1px))",
+  "sm": "screen and (min-width: calc(#{$sm-num} + 1px))",
+  "md": "screen and (min-width: calc(#{$md-num} + 1px))",
+  "lg": "screen and (min-width: calc(#{$lg-num} + 1px))",
+  "xl": "screen and (min-width: calc(#{$xl-num} + 1px))",
+  "xxl": "screen and (min-width: calc(#{$xxl-num} + 1px))",
+) !default;
+
+// max-width用のメディアクエリmixin
+@mixin media($breakpoint) {
+  @media #{map.get($breakpoints, $breakpoint)} {
+    @content;
+  }
+}
+
+// min-width用のメディアクエリmixin
+@mixin media-min($breakpoint) {
+  @media #{map.get($breakpoints-min, $breakpoint)} {
+    @content;
+  }
+}
+
+// 使い方の例↓
+.text-example {
+  font-size: 1.5rem;
+  @include media(md) {
+    font-size: 1.2rem;
+  }
+  @include media-min(lg) {
+    font-size: 1.8rem;
+  }
+}

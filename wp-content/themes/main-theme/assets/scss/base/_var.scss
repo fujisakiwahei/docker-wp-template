@@ -1,0 +1,22 @@
+// ===================================
+// 変数・ミックスインの中央管理ファイル
+// ===================================
+// このファイルを@useすれば、全ての変数とミックスインが使えます
+
+// 🎨 カラー変数
+@forward "../abstract/colors";
+
+// 🔤 フォント変数
+@forward "../abstract/fonts";
+
+// 📐 ブレークポイント変数
+@forward "../abstract/breakpoints";
+
+// ✨ トランジション変数
+@forward "../abstract/transitions";
+
+// 🌑 シャドウ変数
+@forward "../abstract/shadows";
+
+// 🛠️ ミックスイン
+@forward "../mixins/mixins";

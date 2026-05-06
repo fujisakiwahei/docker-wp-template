@@ -1,0 +1,63 @@
+// ===================================
+// 共通スタイル
+// ===================================
+// サイト全体に適用される基本スタイル
+
+@use "./reset";
+@use "./var" as *;
+@use "../mixins/mixins" as *;
+
+html {
+  scroll-behavior: smooth;
+}
+
+// body基本スタイル
+body {
+  font-family: $font-sans;
+  font-weight: 400;
+  font-size: 16px;
+  letter-spacing: 0.1em;
+  line-height: 1.5;
+  color: $color-black;
+  background-color: $color-white;
+}
+
+// リンクの基本スタイル
+a{
+  cursor: pointer;
+}
+
+
+
+main {
+  position: relative;
+}
+
+// デバイスサイズに応じた表示切り替え
+.pc-only {
+  // 769px以上の時だけ表示（768px以下で非表示）
+  @include media(md) {
+    display: none !important;
+  }
+}
+
+.sp-only {
+  // 576px以下の時に表示（577px以上で非表示）
+  @include media-min(sm) {
+    display: none !important;
+  }
+}
+
+.under-tablet-only {
+  // 768px以下の時に表示（769px以上で非表示）
+  @include media-min(md) {
+    display: none !important;
+  }
+}
+
+.over-tablet-only {
+  // 577px以上の時に表示（576px以下で非表示）
+  @include media(sm) {
+    display: none !important;
+  }
+}

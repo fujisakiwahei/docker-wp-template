@@ -1,0 +1,17 @@
+// ===================================
+// フォント変数
+// ===================================
+
+// サイト全体で使用するフォントファミリー
+
+$font-sans: "Noto Sans JP", sans-serif;
+$font-serif: "Noto Serif JP", serif;
+$font-en: "Roboto", sans-serif;
+$font-decorative: "Georgia", serif;
+
+
+// 引数の数値をremに変換してくれる関数。（htmlのfont-sizeが16pxの前提）
+
+@function rem($px) {
+  @return ($px / 16) * 1rem;
+}

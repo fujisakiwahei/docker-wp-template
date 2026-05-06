@@ -1,0 +1,22 @@
+{
+  "name": "template-project-name",
+  "version": "1.0.0",
+  "description": "WordPress theme project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "browser": "browser-sync start --config bs-config.js",
+    "lint:css": "stylelint \"**/*.{css,scss}\" --ignore-path .stylelintignore",
+    "lint:fix": "stylelint \"**/*.{css,scss}\" --fix --ignore-path .stylelintignore"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "browser-sync": "^3.0.4",
+    "stylelint": "^16.0.0",
+    "stylelint-order": "^6.0.0",
+    "postcss-scss": "^4.0.0"
+  }
+}
