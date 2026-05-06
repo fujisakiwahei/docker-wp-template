@@ -1,4 +1,4 @@
-FROM wordpress:php8.2-apache
+FROM wordpress:php8.3-apache
 
 RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
   && chmod +x wp-cli.phar \
