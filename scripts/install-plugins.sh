@@ -4,7 +4,6 @@ set -e
 
 cd /var/www/html
 
-# 未インストールならインストール＆有効化。入っているが無効なら有効化。
 required_plugins=(
   advanced-custom-fields
   all-in-one-seo-pack
@@ -16,22 +15,22 @@ required_plugins=(
 )
 
 for slug in "${required_plugins[@]}"; do
-  if ! wp plugin is-installed "$slug" --allow-root; then
-    wp plugin install "$slug" --activate --allow-root
-  elif ! wp plugin is-active "$slug" --allow-root; then
-    wp plugin activate "$slug" --allow-root
+  if ! wp plugin is-installed "$slug"; then
+    wp plugin install "$slug" --activate
+  elif ! wp plugin is-active "$slug"; then
+    wp plugin activate "$slug"
   fi
 done
 
 # SiteGuard はログインURLが変わるためインストールのみ
-if ! wp plugin is-installed siteguard --allow-root; then
-  wp plugin install siteguard --allow-root
+if ! wp plugin is-installed siteguard; then
+  wp plugin install siteguard
 fi
 
-# デフォルトプラグイン削除（存在するときだけ）
+# デフォルトプラグイン削除
 for slug in akismet hello; do
-  if wp plugin is-installed "$slug" --allow-root; then
-    wp plugin deactivate "$slug" --allow-root || true
-    wp plugin delete "$slug" --allow-root || true
+  if wp plugin is-installed "$slug"; then
+    wp plugin deactivate "$slug" || true
+    wp plugin delete "$slug" || true
   fi
 done
