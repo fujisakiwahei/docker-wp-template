@@ -1,8 +1,11 @@
 .env
+wp-content/plugins/
 wp-content/uploads/
-wp-content/cache/
+wp-content/languages/
 wp-content/upgrade/
-wp-content/debug.log
+wp-content/w3tc-config/
+wp-content/cache/
+wp-content/advanced-cache.php
 node_modules/
 vendor/
 .DS_Store

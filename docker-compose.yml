@@ -19,7 +19,8 @@ services:
       THEME_NAME: ${THEME_NAME}
 
     volumes:
-      - ./wp-content:/var/www/html/wp-content
+      - wordpress_data:/var/www/html
+      - ./wp-content/themes:/var/www/html/wp-content/themes
       - ./scripts:/scripts
 
     depends_on:
