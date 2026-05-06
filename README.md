@@ -46,7 +46,7 @@ docker compose exec wordpress bash /scripts/init.sh
 ### 4. プラグインインストール
 
 ```bash
-docker compose exec wordpress bash /scripts/install-plugins.sh
+docker compose exec -u www-data wordpress bash /scripts/install-plugins.sh
 ```
 
 実行内容：
