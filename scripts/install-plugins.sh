@@ -4,11 +4,6 @@ set -e
 
 cd /var/www/html
 
-# デフォルトプラグイン削除
-wp plugin deactivate akismet hello --allow-root || true
-
-wp plugin delete akismet hello --allow-root || true
-
 # 一括インストール＆有効化
 wp plugin install \
 advanced-custom-fields \
@@ -25,3 +20,8 @@ duplicate-post \
 wp plugin install \
 siteguard \
 --allow-root
+
+# デフォルトプラグイン削除
+wp plugin deactivate akismet hello --allow-root || true
+
+wp plugin delete akismet hello --allow-root || true
