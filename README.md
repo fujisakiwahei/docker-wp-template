@@ -1,11 +1,11 @@
-# WordPress Docker Template
+# セットアップ手順
 
-## リポジトリをClone
+## 1. リポジトリをClone
 
 1. Use this template で新しいリポジトリを複製
 2. プロジェクトを配置したいディレクトリで`git clone`
 
-## ローカルでのセットアップ
+## 2. ローカルでのセットアップ
 
 ### 1. `.env` を作成
 
