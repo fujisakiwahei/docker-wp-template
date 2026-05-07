@@ -1,4 +1,67 @@
+# このリポジトリの目的
+
+Docker を利用して、WordPress + フロントエンド開発環境をローカルに即座に構築できるようにするためのテンプレートリポジトリです。
+
+以下を目的としています。
+
+- 案件開始時の初期構築コスト削減
+- 開発環境差異の排除
+- WordPress 初期設定の自動化
+- 必須プラグイン導入の標準化
+- フロントエンド開発環境の共通化
+- 新規案件の高速立ち上げ
+
+---
+
+# 解決する課題
+
+従来の WordPress 案件では、毎回以下のような初期作業が発生していました。
+
+- ローカル環境構築
+- PHP / MySQL バージョン差異
+- WordPress 手動インストール
+- 日本語設定
+- タイムゾーン設定
+- パーマリンク設定
+- noindex 設定
+- 必須プラグイン導入
+- SCSS / npm 初期化
+- 固定ページ作成
+
+本リポジトリでは、これらを Docker + WP-CLI + スクリプトで標準化・自動化しています。
+
+---
+
+# 使用する技術
+
+- Docker
+- WordPress
+- WP-CLI
+- PHP
+- MySQL
+- Node.js
+- npm
+- SCSS
+- Stylelint（SCSSのプロパティを保存時自動実行で並び替え。並び順は`main-theme` の `stylelint.config.js` で設定）
+
 # セットアップ手順
+
+## 0. 前提として、以下がインストール済み・設定済みであること。
+- Git
+- Docker Desktop
+- Node.js
+- npm
+- VSCode（Cursorなどフォークでも可）
+  - Stylelint拡張機能
+- Stylelint の保存時自動実行（settings.jsonで、Stylelint の保存時自動修正を有効化してください。）
+```settings.json
+{
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.stylelint": "explicit"
+  }
+}
+```
 
 ## 1. リポジトリをClone
 
