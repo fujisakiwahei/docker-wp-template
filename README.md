@@ -143,59 +143,37 @@ npm install
 
 ---
 
-### 7. 固定ページの WP-CLI 作成（AI 生成コマンドの実行）
+### 7. `page-〇〇.php` と固定ページの作成
+この手順では `page-{slug}.php` と、それに対応する固定ページを作成します。
 
-1. 下記 **「AI へのプロンプト」** をコピーし、**ファイル構成** に `wp-content/themes/main-theme` の最新の PHP 配置（特に `page-*.php`）を追記して AI に渡す。
-2. AI から **2 つの bash コードブロック**（第一：`docker compose exec` と `wp post create` の `&&` チェーン、第二：同様に `page-{slug}.php` 向け）が返ったら、その **順に** プロジェクトルートで実行する。
-3. 第一ブロックはサイト共通の固定ページ、第二ブロックは `page-*.php` のスラッグに対応する固定ページ用。**現行テーマに `page-*.php` が無い場合**は第二ブロックが空やコメントのみになることがある（そのときはスキップするか、テンプレ追加後に再実行する）。
-4. **手順 3** の `init.sh` で既に `home` 固定ページを作っているため、第一ブロックに **ホーム重複作成** が含まれる場合は、実行前に AI の出力を調整するか、重複に注意する。
+1. 下記プロンプトを AI に渡す
+2. 生成された 2 つのコードブロックを確認する（Docker上で実行するWP-CLIと、プロジェクトルートで実行するCLI）
+3. 問題なければ、上から順に 1 つずつ実行する
 
-#### ファイル構成（例・追記用）
+※ AI は間違うことがあります。`slug` やファイル名、ページタイトルが意図通りか実行前に確認してください。
 
-`main-theme` 直下の PHP（現時点）：
-
-- `404.php`
-- `footer.php`
-- `front-page.php`
-- `functions.php`
-- `header.php`
-- `pages-template.php`
-- `components/Button.php`
-- `inc/*.php`
-
-※ `page-{slug}.php` 形式のテンプレートは **未配置**。
-
-#### AI へのプロンプト（コピー用）
+#### AI へのプロンプト
 
 ```text
-現在のファイル構成を参照して、固定ページ作成用のDocker対応WP-CLIコマンドと、page-〇〇を作成するCLIコマンドを生成し、別のコードブロックで出力してください。（合計2つ）`&&` でチェーンにしてください。
+現在のファイル構成を参照して、`page-〇〇.php` ファイル作成コマンドと、対応する固定ページ作成用の Docker 対応 WP-CLI コマンドを生成してください。
 
-## ファイル構成（ユーザ入力）
+コードブロックは 2 つに分けてください。
 
-（ここに wp-content/themes/main-theme の tree や page-*.php の一覧を貼る）
+1つ目：
+- `/wp-content/themes/main-theme/` に `page-{slug}.php` を作成するコマンド
 
-## 仕様：
+2つ目：
+- 固定ページを作成する `wp post create` コマンド
+
+wp post create仕様：
+- コマンドは `&&` でチェーン
 - `docker compose exec wordpress` を使用
 - `wp post create` を使用
 - `--post_type=page`
-- `--post_title='タイトル'`（サイトマップから取得。不明な場合はヒアリングしてください）
 - `--post_status=publish`
-- `--post_name='slug'`（PHPファイル名から抽出）
-- `--allow-root` を付与
-- 出力は実行可能なコマンドのみ
-```
-
-#### 生成コマンド例（現行リポジトリ・参考）
-
-**第一ブロック（共通固定ページ・`front-page.php` 用にホーム）**
-
-```bash
-docker compose exec wordpress wp post create --post_type=page --post_title='ホーム' --post_status=publish --post_name='home' --allow-root
-```
-
-**第二ブロック（`page-{slug}.php` 向け）**
-
-現状 `page-*.php` が無いため、**このリポジトリ単体では `wp post create` の第二チェーンは生成しない**。テーマに `page-about.php` などを追加したら、上のプロンプトで AI に再実行させる。
+- `--post_name='slug'`
+- `--allow-root`
+- `home` は生成しない
 
 ---
 
