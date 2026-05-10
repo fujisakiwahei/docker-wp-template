@@ -8,4 +8,6 @@ wp-content/cache/
 wp-content/advanced-cache.php
 node_modules/
 vendor/
-.DS_Store.env.example
+.DS_Store
+wp-content/themes/main-theme/style.css
+wp-content/themes/main-theme/style.css.map
