@@ -8,4 +8,4 @@ wp-content/cache/
 wp-content/advanced-cache.php
 node_modules/
 vendor/
-.DS_Store
+.DS_Store.env.example
