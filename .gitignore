@@ -11,3 +11,5 @@ vendor/
 .DS_Store
 wp-content/themes/main-theme/style.css
 wp-content/themes/main-theme/style.css.map
+.worktrees/
+worktrees/
