@@ -58,7 +58,7 @@ try {
   // -----------------------
 
   console.log("✨ セットアップ完了！");
-  console.log('👉 次に "npm install" を実行して依存関係をインストールしてください。');
+  console.log('👉 次に "npm install" を実行して依存関係をインストールします。');
 } catch (error) {
   console.error("エラーが発生しました:", error);
 }
