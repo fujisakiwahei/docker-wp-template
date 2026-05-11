@@ -51,3 +51,10 @@ wp rewrite flush --allow-root
 
 # noindex
 wp option update blog_public 0 --allow-root
+
+# uploads ディレクトリ作成
+mkdir -p /var/www/html/wp-content/uploads
+
+# 権限修正
+chown -R www-data:www-data /var/www/html/wp-content
+chmod -R 755 /var/www/html/wp-content
