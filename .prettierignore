@@ -1,0 +1,5 @@
+node_modules/
+wp-content/plugins/
+wp-content/themes/main-theme/style.css
+wp-content/themes/main-theme/style.css.map
+**/*.min.js
