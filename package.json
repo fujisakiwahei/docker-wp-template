@@ -1,0 +1,28 @@
+{
+  "name": "wordpress-docker",
+  "version": "1.0.0",
+  "description": "WordPress theme project",
+  "main": "index.js",
+  "scripts": {
+    "eslint": "eslint wp-content/themes/main-theme --fix",
+    "stylelint": "stylelint \"wp-content/themes/main-theme/**/*.{css,scss}\" --fix --ignore-path .stylelintignore",
+    "sass": "sass wp-content/themes/main-theme/assets/scss/style.scss:wp-content/themes/main-theme/style.css",
+    "sass:watch": "sass wp-content/themes/main-theme/assets/scss/style.scss:wp-content/themes/main-theme/style.css --watch",
+    "format": "prettier wp-content/themes/main-theme --write"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@eslint/js": "^9.0.0",
+    "eslint": "^9.0.0",
+    "eslint-config-prettier": "^9.0.0",
+    "globals": "^15.0.0",
+    "postcss-scss": "^4.0.0",
+    "prettier": "^3.0.0",
+    "sass": "^1.77.0",
+    "stylelint": "^16.0.0",
+    "stylelint-order": "^6.0.0"
+  }
+}
