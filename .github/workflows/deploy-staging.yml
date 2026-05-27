@@ -1,0 +1,36 @@
+# Stagingブランチの`main-theme`をConoHaのテストサーバに自動デプロイする（mainブランチは、本番環境を管理できる時に別途追加）
+name: Deploy to ConoHa WING Staging
+
+on:
+  push:
+    branches:
+      - staging
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Deploy to My ConoHa WING
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.STAGING_SSH_PRIVATE_KEY }}
+          REMOTE_HOST: ${{ secrets.STAGING_REMOTE_HOST }}
+          REMOTE_USER: ${{ secrets.STAGING_REMOTE_USER }}
+          REMOTE_PATH: ${{ secrets.STAGING_REMOTE_PATH }}
+        run: |
+          mkdir -p ~/.ssh
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -p 8022 -H $REMOTE_HOST >> ~/.ssh/known_hosts
+
+          rsync -avz --delete \
+              -e "ssh -p 8022 -i ~/.ssh/id_rsa" \
+              --exclude='.git' \
+              --exclude='.github' \
+              --exclude='node_modules' \
+              --exclude='package.json' \
+              --exclude='package-lock.json' \
+              --exclude='pnpm-lock.yaml' \
+              wp-content/themes/main-theme/ \ 
+              ${REMOTE_USER}@${REMOTE_HOST}:${REMOTE_PATH}/
