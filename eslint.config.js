@@ -6,6 +6,16 @@ module.exports = [
   js.configs.recommended,
   prettier,
   {
+    files: ["*.config.js", "*.config.cjs", ".*.js"],
+    languageOptions: {
+      ecmaVersion: 2022,
+      sourceType: "commonjs",
+      globals: {
+        ...globals.node,
+      },
+    },
+  },
+  {
     files: ["wp-content/themes/main-theme/**/*.js"],
     languageOptions: {
       ecmaVersion: 2022,
