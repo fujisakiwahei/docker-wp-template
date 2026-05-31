@@ -84,11 +84,13 @@ docker compose up -d --build
 ### 3. WordPress 初期設定
 
 ```bash
+composer require --dev php-stubs/wordpress-stubs
 docker compose exec wordpress bash /scripts/init.sh
 ```
 
 実行内容：
 
+- WordPressの関数はZedに認識されない場合があるため、スタブを追加。読み込みはグローバルのsettings.jsonで定義済み
 - WordPress インストール
 - 日本語化
 - タイムゾーン設定
