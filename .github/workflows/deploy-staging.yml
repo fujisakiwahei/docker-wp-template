@@ -32,5 +32,5 @@ jobs:
               --exclude='package.json' \
               --exclude='package-lock.json' \
               --exclude='pnpm-lock.yaml' \
-              wp-content/themes/main-theme/ \ 
+              wp-content/themes/main-theme/ \
               ${REMOTE_USER}@${REMOTE_HOST}:${REMOTE_PATH}/
