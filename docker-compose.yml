@@ -17,11 +17,13 @@ services:
       WP_ADMIN_PASSWORD: ${WP_ADMIN_PASSWORD}
       WP_ADMIN_EMAIL: ${WP_ADMIN_EMAIL}
       THEME_NAME: ${THEME_NAME}
+      PROJECT_NAME: ${PROJECT_NAME}
 
     volumes:
       - wordpress_data:/var/www/html
       - ./wp-content/themes:/var/www/html/wp-content/themes
       - ./scripts:/scripts
+      - ./plugins-local:/plugins-local:ro
 
     depends_on:
       - db

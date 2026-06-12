@@ -2,6 +2,18 @@
 set -e
 cd /var/www/html
 
+# WordPress 本体インストール（未インストール時のみ）
+if ! wp core is-installed --allow-root; then
+  wp core install \
+    --url="http://localhost:8080" \
+    --title="${PROJECT_NAME:-WordPress}" \
+    --admin_user="$WP_ADMIN_USER" \
+    --admin_password="$WP_ADMIN_PASSWORD" \
+    --admin_email="$WP_ADMIN_EMAIL" \
+    --skip-email \
+    --allow-root
+fi
+
 # 日本語化
 wp language core install ja --activate --allow-root
 

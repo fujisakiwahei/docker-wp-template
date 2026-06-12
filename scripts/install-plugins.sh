@@ -7,7 +7,6 @@ cd /var/www/html
 required_plugins=(
   advanced-custom-fields
   all-in-one-seo-pack
-  all-in-one-wp-migration
   contact-form-7
   custom-post-type-ui
   w3-total-cache
@@ -21,6 +20,27 @@ for slug in "${required_plugins[@]}"; do
     wp plugin activate "$slug" --allow-root
   fi
 done
+
+# All-in-One WP Migration はローカル zip からバージョン固定インストール (issue #1)
+LOCAL_PLUGIN_DIR="/plugins-local"
+shopt -s nullglob
+ai1wm_zips=("$LOCAL_PLUGIN_DIR"/all-in-one-wp-migration*.zip)
+shopt -u nullglob
+ai1wm_zip="${ai1wm_zips[0]:-}"
+
+if ! wp plugin is-installed all-in-one-wp-migration --allow-root; then
+  if [ -n "$ai1wm_zip" ]; then
+    wp plugin install "$ai1wm_zip" --activate --allow-root
+  else
+    echo "WARNING: ${LOCAL_PLUGIN_DIR} に all-in-one-wp-migration*.zip がありません。wp.org 最新版で代替します（バージョン固定されません）" >&2
+    wp plugin install all-in-one-wp-migration --activate --allow-root
+  fi
+elif ! wp plugin is-active all-in-one-wp-migration --allow-root; then
+  wp plugin activate all-in-one-wp-migration --allow-root
+fi
+
+# 固定バージョン維持のため自動更新を無効化（既に無効の場合はエラーになるため抑制）
+wp plugin auto-updates disable all-in-one-wp-migration --allow-root 2>/dev/null || true
 
 # SiteGuard はログインURLが変わるためインストールのみ
 if ! wp plugin is-installed siteguard --allow-root; then
