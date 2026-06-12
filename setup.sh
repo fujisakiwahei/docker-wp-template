@@ -43,7 +43,7 @@ docker compose exec -T wordpress bash /scripts/install-plugins.sh
 
 # 6. ホスト側ツール（無ければスキップ）
 if command -v composer >/dev/null 2>&1; then
-  [ -f composer.json ] || composer require --dev php-stubs/wordpress-stubs
+  composer install
 else
   echo "composer 未検出のため wordpress-stubs をスキップ（エディタ補完用・任意）"
 fi

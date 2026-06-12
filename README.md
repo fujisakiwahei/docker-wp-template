@@ -97,7 +97,7 @@ bash setup.sh
 - WordPress インストール（管理者は `.env` の `WP_ADMIN_*` を使用）
 - 日本語化・タイムゾーン設定・テーマ有効化・ホーム固定ページ作成・パーマリンク設定・noindex 設定
 - デフォルトプラグイン削除・必須プラグイン一括インストール（All-in-One WP Migration は `plugins-local/` の zip からバージョン固定、SiteGuard はインストールのみ）
-- `composer require --dev php-stubs/wordpress-stubs`（composer がある場合のみ。WordPressの関数はZedに認識されない場合があるため、スタブを追加。読み込みはグローバルのsettings.jsonで定義済み）
+- `composer install`（composer がある場合のみ。WordPressの関数はZedに認識されない場合があるため、wordpress-stubs を導入。読み込みはグローバルのsettings.jsonで定義済み）
 - `pnpm install`（pnpm がある場合のみ）
 
 再実行しても安全（冪等）。
